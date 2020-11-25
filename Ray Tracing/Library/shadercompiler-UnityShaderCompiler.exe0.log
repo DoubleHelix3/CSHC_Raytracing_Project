@@ -1,85 +1,175 @@
 Base path: 'C:/Program Files/Unity/Hub/Editor/2019.2.1f1/Editor/Data', plugins path 'C:/Program Files/Unity/Hub/Editor/2019.2.1f1/Editor/Data/PlaybackEngines'
 Cmd: initializeCompiler
 Cmd: preprocessCompute
-  insize=4078 outsize=4077 ok=1
+  insize=5495 outsize=5494 ok=1
 Cmd: compileComputeKernel
-  api=4 insize=4077 outsize=3981 ok=1
+  api=4 insize=5494 outsize=4303 ok=1
 Cmd: preprocessCompute
-  insize=4072 outsize=4071 ok=1
+  insize=5497 outsize=5496 ok=1
 Cmd: compileComputeKernel
-  error: 2 plat 4 at RayTracingShader.compute(93): syntax error: unexpected token 'f'
-  api=4 insize=4071 outsize=0 ok=0
+  api=4 insize=5496 outsize=4331 ok=1
 Cmd: preprocessCompute
-  insize=4108 outsize=4107 ok=1
+  insize=5495 outsize=5494 ok=1
 Cmd: preprocessCompute
-  insize=4304 outsize=4303 ok=1
+  insize=5495 outsize=5494 ok=1
 Cmd: compileComputeKernel
-  error: 2 plat 4 at RayTracingShader.compute(68): undeclared identifier 'bestHit'
-  api=4 insize=4303 outsize=0 ok=0
+  api=4 insize=5494 outsize=4303 ok=1
 Cmd: preprocessCompute
-  insize=4538 outsize=4537 ok=1
+  insize=5495 outsize=5494 ok=1
 Cmd: compileComputeKernel
-  error: 2 plat 4 at RayTracingShader.compute(72): undeclared identifier 'bestHit'
-  api=4 insize=4537 outsize=0 ok=0
+  error: 2 plat 4 at (0): Program 'CSMain', error X3504: literal loop terminated early due to out of bounds array access
+  error: 1 plat 4 at RayTracingShader.compute(162): loop only executes for 0 iteration(s), forcing loop to unroll
+  api=4 insize=5494 outsize=0 ok=0
 Cmd: preprocessCompute
-  insize=4539 outsize=4538 ok=1
+  insize=5495 outsize=5494 ok=1
+Cmd: preprocessCompute
+  insize=5495 outsize=5494 ok=1
+Cmd: preprocessCompute
+  insize=5496 outsize=5495 ok=1
 Cmd: compileComputeKernel
-  error: 2 plat 4 at RayTracingShader.compute(31): syntax error: unexpected token ','
-  error: 2 plat 4 at RayTracingShader.compute(34): undeclared identifier 'direction'
-  api=4 insize=4538 outsize=0 ok=0
+  api=4 insize=5495 outsize=4303 ok=1
+Cmd: compileSnippet
+  api=4 type=0 insize=1302 outsize=1414 kw=UNITY_PASS_SHADOWCASTER SHADOWS_DEPTH pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=1
+Cmd: compileSnippet
+  api=4 type=1 insize=1302 outsize=218 kw=UNITY_PASS_SHADOWCASTER SHADOWS_DEPTH pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=1
+Cmd: compileSnippet
+  api=4 type=0 insize=1596 outsize=1894 kw=UNITY_PASS_FORWARDBASE DIRECTIONAL LIGHTPROBE_SH pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=1
+Cmd: compileSnippet
+  api=4 type=1 insize=1596 outsize=6814 kw=UNITY_PASS_FORWARDBASE DIRECTIONAL LIGHTPROBE_SH pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=1
+Cmd: compileSnippet
+  api=4 type=0 insize=1454 outsize=1690 kw=UNITY_PASS_FORWARDADD DIRECTIONAL pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=1
+Cmd: compileSnippet
+  api=4 type=1 insize=1454 outsize=3378 kw=UNITY_PASS_FORWARDADD DIRECTIONAL pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=1
 Cmd: preprocessCompute
-  insize=4816 outsize=4815 ok=1
+  insize=5579 outsize=5578 ok=1
 Cmd: compileComputeKernel
-  error: 2 plat 4 at RayTracingShader.compute(82): undeclared identifier 'bestHit'
-  api=4 insize=4815 outsize=0 ok=0
+  error: 2 plat 4 at RayTracingShader.compute(34): syntax error: unexpected token '['
+  api=4 insize=5578 outsize=0 ok=0
 Cmd: preprocessCompute
-  insize=4819 outsize=4818 ok=1
+  insize=5590 outsize=5589 ok=1
 Cmd: compileComputeKernel
-  error: 2 plat 4 at RayTracingShader.compute(82): undeclared identifier 'bestHit'
-  api=4 insize=4818 outsize=0 ok=0
+  error: 2 plat 4 at RayTracingShader.compute(34): '_SpherePositions': implicit array missing initial value
+  error: 2 plat 4 at RayTracingShader.compute(34): undeclared identifier 'numberOfSpheres'
+  api=4 insize=5589 outsize=0 ok=0
 Cmd: preprocessCompute
-  insize=4855 outsize=4854 ok=1
+  insize=5476 outsize=5475 ok=1
+Cmd: preprocessCompute
+  insize=5503 outsize=5502 ok=1
+Cmd: preprocessCompute
+  insize=5496 outsize=5495 ok=1
+Cmd: preprocessCompute
+  insize=5291 outsize=5290 ok=1
 Cmd: compileComputeKernel
-  error: 2 plat 4 at RayTracingShader.compute(90): invalid subscript 'xyz'
-  api=4 insize=4854 outsize=0 ok=0
+  error: 2 plat 4 at RayTracingShader.compute(36): undeclared identifier '_SpherePositions'
+  api=4 insize=5290 outsize=0 ok=0
 Cmd: preprocessCompute
-  insize=4865 outsize=4864 ok=1
+  insize=5415 outsize=5414 ok=1
 Cmd: preprocessCompute
-  insize=4875 outsize=4874 ok=1
+  insize=5361 outsize=5360 ok=1
 Cmd: compileComputeKernel
-  api=4 insize=4874 outsize=3996 ok=1
-Cmd: disassembleShader
-  api=4 insize=3640 outsize=5248 ok=1
+  error: 2 plat 4 at RayTracingShader.compute(39): array, matrix, vector, or indexable object type expected in index expression
+  api=4 insize=5360 outsize=0 ok=0
 Cmd: preprocessCompute
-  insize=4876 outsize=4875 ok=1
+  insize=5367 outsize=5366 ok=1
 Cmd: compileComputeKernel
-  error: 2 plat 4 at RayTracingShader.compute(92): invalid subscript 'radiuss'
-  api=4 insize=4875 outsize=0 ok=0
+  error: 2 plat 4 at RayTracingShader.compute(34): '_SpherePositions': implicit array missing initial value
+  api=4 insize=5366 outsize=0 ok=0
 Cmd: preprocessCompute
-  insize=4875 outsize=4874 ok=1
-Cmd: preprocessCompute
-  insize=4962 outsize=4961 ok=1
+  insize=5361 outsize=5360 ok=1
 Cmd: compileComputeKernel
-  api=4 insize=4961 outsize=3996 ok=1
+  error: 2 plat 4 at RayTracingShader.compute(39): array, matrix, vector, or indexable object type expected in index expression
+  api=4 insize=5360 outsize=0 ok=0
 Cmd: preprocessCompute
-  insize=5014 outsize=5013 ok=1
+  insize=5363 outsize=5362 ok=1
 Cmd: compileComputeKernel
-  error: 2 plat 4 at RayTracingShader.compute(27): array dimensions must be literal scalar expressions
-  api=4 insize=5013 outsize=0 ok=0
+  error: 2 plat 4 at RayTracingShader.compute(34): '_SpherePositions': implicit array missing initial value
+  api=4 insize=5362 outsize=0 ok=0
 Cmd: preprocessCompute
-  insize=5000 outsize=4999 ok=1
+  insize=5369 outsize=5368 ok=1
 Cmd: compileComputeKernel
-  api=4 insize=4999 outsize=3996 ok=1
+  error: 2 plat 4 at RayTracingShader.compute(33): '_numberOfSpheres': implicit array missing initial value
+  api=4 insize=5368 outsize=0 ok=0
 Cmd: preprocessCompute
-  insize=4951 outsize=4950 ok=1
+  insize=5382 outsize=5381 ok=1
 Cmd: compileComputeKernel
-  api=4 insize=4950 outsize=3996 ok=1
+  error: 2 plat 4 at RayTracingShader.compute(34): syntax error: unexpected token '}'
+  api=4 insize=5381 outsize=0 ok=0
 Cmd: preprocessCompute
-  insize=4997 outsize=4996 ok=1
+  insize=5390 outsize=5389 ok=1
 Cmd: compileComputeKernel
-  error: 2 plat 4 at RayTracingShader.compute(102): invalid subscript 'specular'
-  api=4 insize=4996 outsize=0 ok=0
+  error: 2 plat 4 at RayTracingShader.compute(34): syntax error: unexpected token '['
+  api=4 insize=5389 outsize=0 ok=0
 Cmd: preprocessCompute
-  insize=4994 outsize=4993 ok=1
+  insize=5388 outsize=5387 ok=1
 Cmd: compileComputeKernel
-  api=4 insize=4993 outsize=4092 ok=1
+  error: 2 plat 4 at RayTracingShader.compute(34): syntax error: unexpected token '['
+  api=4 insize=5387 outsize=0 ok=0
+Cmd: preprocessCompute
+  insize=5365 outsize=5364 ok=1
+Cmd: compileComputeKernel
+  error: 2 plat 4 at RayTracingShader.compute(35): '_SphereRadii': implicit array missing initial value
+  api=4 insize=5364 outsize=0 ok=0
+Cmd: preprocessCompute
+  insize=5220 outsize=5219 ok=1
+Cmd: compileComputeKernel
+  error: 2 plat 4 at RayTracingShader.compute(34): 'spheres': implicit array missing initial value
+  error: 2 plat 4 at RayTracingShader.compute(34): undeclared identifier 'numbersOfSpheres'
+  api=4 insize=5219 outsize=0 ok=0
+Cmd: preprocessCompute
+  insize=5224 outsize=5223 ok=1
+Cmd: compileComputeKernel
+  error: 2 plat 4 at RayTracingShader.compute(34): 'spheres': implicit array missing initial value
+  error: 2 plat 4 at RayTracingShader.compute(34): undeclared identifier 'numbersOfSpheres'
+  api=4 insize=5223 outsize=0 ok=0
+Cmd: preprocessCompute
+  insize=5275 outsize=5274 ok=1
+Cmd: compileComputeKernel
+  error: 2 plat 4 at RayTracingShader.compute(34): 'spheres': implicit array missing initial value
+  error: 2 plat 4 at RayTracingShader.compute(34): undeclared identifier 'numbersOfSpheres'
+  api=4 insize=5274 outsize=0 ok=0
+Cmd: preprocessCompute
+  insize=5261 outsize=5260 ok=1
+Cmd: compileComputeKernel
+  error: 2 plat 4 at RayTracingShader.compute(34): 'CreateSphere': no matching 0 parameter function
+  error: 2 plat 4 at RayTracingShader.compute(34): syntax error: unexpected token 'f'
+  api=4 insize=5260 outsize=0 ok=0
+Cmd: preprocessCompute
+  insize=5263 outsize=5262 ok=1
+Cmd: compileComputeKernel
+  error: 2 plat 4 at RayTracingShader.compute(34): 'CreateSphere': no matching 0 parameter function
+  error: 2 plat 4 at RayTracingShader.compute(34): syntax error: unexpected token 'f'
+  api=4 insize=5262 outsize=0 ok=0
+Cmd: preprocessCompute
+  insize=5262 outsize=5261 ok=1
+Cmd: compileComputeKernel
+  error: 2 plat 4 at RayTracingShader.compute(34): 'CreateSphere': no matching 0 parameter function
+  error: 2 plat 4 at RayTracingShader.compute(34): syntax error: unexpected token 'f'
+  api=4 insize=5261 outsize=0 ok=0
+Cmd: preprocessCompute
+  insize=5259 outsize=5258 ok=1
+Cmd: compileComputeKernel
+  error: 2 plat 4 at RayTracingShader.compute(34): 'spheres': initial value must be a literal expression
+  api=4 insize=5258 outsize=0 ok=0
+Cmd: preprocessCompute
+  insize=5308 outsize=5307 ok=1
+Cmd: compileComputeKernel
+  error: 2 plat 4 at (0): Program 'CSMain', error X3504: literal loop terminated early due to out of bounds array access
+  error: 1 plat 4 at RayTracingShader.compute(114): loop only executes for 1 iteration(s), forcing loop to unroll
+  api=4 insize=5307 outsize=0 ok=0
+Cmd: preprocessCompute
+  insize=5307 outsize=5306 ok=1
+Cmd: compileComputeKernel
+  error: 2 plat 21 at (0): Unknown parameter type (0) for spheres
+  error: 1 plat 4 at RayTracingShader.compute(114): loop only executes for 1 iteration(s), forcing loop to unroll
+  api=4 insize=5306 outsize=0 ok=0
+Cmd: preprocessCompute
+  insize=5334 outsize=5333 ok=1
+Cmd: compileComputeKernel
+  error: 2 plat 4 at RayTracingShader.compute(149): syntax error: unexpected token 'uint'
+  error: 2 plat 4 at RayTracingShader.compute(150): undeclared identifier 'width'
+  api=4 insize=5333 outsize=0 ok=0
+Cmd: preprocessCompute
+  insize=5335 outsize=5334 ok=1
+Cmd: compileComputeKernel
+  error: 1 plat 4 at RayTracingShader.compute(114): loop only executes for 1 iteration(s), forcing loop to unroll
+  api=4 insize=5334 outsize=4092 ok=1

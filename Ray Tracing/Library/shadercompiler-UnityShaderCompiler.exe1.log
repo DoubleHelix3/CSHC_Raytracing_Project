@@ -1,4 +1,5 @@
 Base path: 'C:/Program Files/Unity/Hub/Editor/2019.2.1f1/Editor/Data', plugins path 'C:/Program Files/Unity/Hub/Editor/2019.2.1f1/Editor/Data/PlaybackEngines'
 Cmd: initializeCompiler
 Cmd: compileComputeKernel
-  api=4 insize=4107 outsize=3996 ok=1
+  error: 2 plat 4 at RayTracingShader.compute(114): undeclared identifier 'numberOfSpheres'
+  api=4 insize=5475 outsize=0 ok=0

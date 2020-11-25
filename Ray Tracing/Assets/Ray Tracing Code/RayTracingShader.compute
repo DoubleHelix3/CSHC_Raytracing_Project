@@ -8,6 +8,13 @@ float4x4 _CameraInverseProjection;
 Texture2D<float4> _SkyboxTexture;
 SamplerState sampler_SkyboxTexture;
 
+static const float PI = 3.14159265f;
+
+float2 _PixelOffsetForAntiAliasing;
+
+//==========================================================================================================
+
+// Spheres are a neat feature but, this will most likely be depreciated once triangles come into the picture
 struct Sphere {
     float3 position;
     float radius;
@@ -23,16 +30,14 @@ Sphere CreateSphere(float3 position, float radius, float3 color) {
 }
 
 // There is a better way to do this with compute buffers, but this works for now. 
-int numberOfSpheres = 1;
+static int numberOfSpheres = 1;
 Sphere spheres[1];
 
-void SetObjects() {
-    spheres[0] = CreateSphere(float3(0, 3.0f, 3.0), float(2.0f), float3(0.8,0.6,0.6));
+void InitializeObjects() {
+    spheres[0] = CreateSphere(float3(0, 0.6f, 0.6f), 2, float3(0.8f, 0.6f, 0.6f));
 }
 
-static const float PI = 3.14159265f;
-
-float2 _PixelOffsetForAntiAliasing;
+//==========================================================================================================
 
 struct Ray {
     float3 origin;
@@ -105,13 +110,17 @@ void IntersectSphere(Ray ray, inout RayHit closestHit, Sphere sphere) {
 
 RayHit Trace(Ray ray) {
     RayHit closestHit = CreateRayHit();
-    
-    IntersectSphere(ray, closestHit, spheres[0]);
+
+    for(int i = 0; i < numberOfSpheres; i++) {
+        IntersectSphere(ray, closestHit, spheres[i]);
+    }
 
     IntersectGroundPlane(ray, closestHit);
 
     return closestHit;
 }
+
+//==========================================================================================================
 
 float3 Shade(inout Ray ray, RayHit hit) {
     if (hit.distance < 1.#INF) {
@@ -133,11 +142,9 @@ float3 Shade(inout Ray ray, RayHit hit) {
 }
 
 [numthreads(8, 8, 1)]
-void CSMain(uint3 id : SV_DispatchThreadID) {
-    // Convert the objects given by the RayTracingMaster into a more usable form
-    // There is most likely a better way to do this, but I can't be bothered to figure it out
-    SetObjects();
-    
+void CSMain(uint3 id : SV_DispatchThreadID) {    
+    InitializeObjects();
+
     // Get the dimensions of the RenderTexture
     uint width, height;
     Result.GetDimensions(width, height);
