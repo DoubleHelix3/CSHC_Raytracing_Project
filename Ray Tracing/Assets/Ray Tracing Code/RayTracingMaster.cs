@@ -56,7 +56,7 @@ public class RayTracingMaster : MonoBehaviour {
         RayTracingShader.SetMatrix("_CameraToWorld", _camera.cameraToWorldMatrix);
         RayTracingShader.SetMatrix("_CameraInverseProjection", _camera.projectionMatrix.inverse);
         RayTracingShader.SetTexture(0, "_SkyboxTexture", SkyboxTexture);
-        RayTracingShader.SetVector("_PixelOffset", new Vector2(Random.value, Random.value));
+        RayTracingShader.SetVector("_PixelOffsetForAntiAliasing", new Vector2(Random.value, Random.value));
     }
 
     private uint _currentSample = 0;

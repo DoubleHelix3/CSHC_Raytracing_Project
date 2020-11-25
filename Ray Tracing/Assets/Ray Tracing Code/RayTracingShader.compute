@@ -8,9 +8,31 @@ float4x4 _CameraInverseProjection;
 Texture2D<float4> _SkyboxTexture;
 SamplerState sampler_SkyboxTexture;
 
+struct Sphere {
+    float3 position;
+    float radius;
+    float3 color;
+};
+
+Sphere CreateSphere(float3 position, float radius, float3 color) {
+    Sphere sphere;
+    sphere.position = position;
+    sphere.radius = radius;
+    sphere.color = color;
+    return sphere;
+}
+
+// There is a better way to do this with compute buffers, but this works for now. 
+int numberOfSpheres = 1;
+Sphere spheres[1];
+
+void SetObjects() {
+    spheres[0] = CreateSphere(float3(0, 3.0f, 3.0), float(2.0f), float3(0.8,0.6,0.6));
+}
+
 static const float PI = 3.14159265f;
 
-float2 _PixelOffset;
+float2 _PixelOffsetForAntiAliasing;
 
 struct Ray {
     float3 origin;
@@ -43,6 +65,7 @@ struct RayHit {
     float3 position;
     float distance;
     float3 normal;
+    float3 specular; // color for shading
 };
 
 RayHit CreateRayHit() {
@@ -50,51 +73,52 @@ RayHit CreateRayHit() {
     hit.position = float3(0.0f, 0.0f, 0.0f);
     hit.distance = 1.#INF;
     hit.normal = float3(0.0f, 0.0f, 0.0f);
+    hit.specular = float3(0.6f, 0.6f, 0.6f);
     return hit;
 }
 
-void IntersectGroundPlane(Ray ray, inout RayHit bestHit) {
+void IntersectGroundPlane(Ray ray, inout RayHit closestHit) {
     // Calculate distance along the ray where the ground plane is intersected
-    float t = -ray.origin.y / ray.direction.y;
-    if (t > 0 && t < bestHit.distance) {
-        bestHit.distance = t;
-        bestHit.position = ray.origin + t * ray.direction;
-        bestHit.normal = float3(0.0f, 1.0f, 0.0f);
+    float dist = -ray.origin.y / ray.direction.y;
+    if (dist > 0 && dist < closestHit.distance) {
+        closestHit.distance = dist;
+        closestHit.position = ray.origin + dist * ray.direction;
+        closestHit.normal = float3(0.0f, 1.0f, 0.0f);
     }
 }
 
-void IntersectSphere(Ray ray, inout RayHit bestHit, float4 sphere) {
+void IntersectSphere(Ray ray, inout RayHit closestHit, Sphere sphere) {
     // Calculate distance along the ray where the sphere is intersected
-    float3 d = ray.origin - sphere.xyz;
+    float3 d = ray.origin - sphere.position;
     float p1 = -dot(ray.direction, d);
-    float p2sqr = p1 * p1 - dot(d, d) + sphere.w * sphere.w;
+    float p2sqr = p1 * p1 - dot(d, d) + sphere.radius * sphere.radius;
     if (p2sqr < 0) return;
     float p2 = sqrt(p2sqr);
     float t = p1 - p2 > 0 ? p1 - p2 : p1 + p2;
-    if (t > 0 && t < bestHit.distance) {
-        bestHit.distance = t;
-        bestHit.position = ray.origin + t * ray.direction;
-        bestHit.normal = normalize(bestHit.position - sphere.xyz);
+    if (t > 0 && t < closestHit.distance) {
+        closestHit.distance = t;
+        closestHit.position = ray.origin + t * ray.direction;
+        closestHit.normal = normalize(closestHit.position - sphere.position);
+        closestHit.specular = sphere.color;
     }
 }
 
 RayHit Trace(Ray ray) {
-    RayHit bestHit = CreateRayHit();
+    RayHit closestHit = CreateRayHit();
+    
+    IntersectSphere(ray, closestHit, spheres[0]);
 
-    IntersectSphere(ray, bestHit, float4(0, 3.0f, 3.0, 2.0f));
+    IntersectGroundPlane(ray, closestHit);
 
-    IntersectGroundPlane(ray, bestHit);
-
-    return bestHit;
+    return closestHit;
 }
 
 float3 Shade(inout Ray ray, RayHit hit) {
     if (hit.distance < 1.#INF) {
-        float3 specular = float3(0.6f, 0.6f, 0.6f);
         // Reflect the ray and multiply energy with specular reflection
         ray.origin = hit.position + hit.normal * 0.001f;
         ray.direction = reflect(ray.direction, hit.normal);
-        ray.energy *= specular;
+        ray.energy *= hit.specular;
         // Return nothing
         return float3(0.0f, 0.0f, 0.0f);
     }
@@ -106,17 +130,20 @@ float3 Shade(inout Ray ray, RayHit hit) {
         float phi = atan2(ray.direction.x, -ray.direction.z) / -PI * 0.5f;
         return _SkyboxTexture.SampleLevel(sampler_SkyboxTexture, float2(phi, theta), 0).xyz;
     }
-
 }
 
 [numthreads(8, 8, 1)]
 void CSMain(uint3 id : SV_DispatchThreadID) {
+    // Convert the objects given by the RayTracingMaster into a more usable form
+    // There is most likely a better way to do this, but I can't be bothered to figure it out
+    SetObjects();
+    
     // Get the dimensions of the RenderTexture
     uint width, height;
     Result.GetDimensions(width, height);
 
     // Transform pixel to [-1,1] range
-    float2 uv = float2((id.xy + _PixelOffset) / float2(width, height) * 2.0f - 1.0f);
+    float2 uv = float2((id.xy + _PixelOffsetForAntiAliasing) / float2(width, height) * 2.0f - 1.0f);
 
     // Get a ray for the UVs
     Ray ray = CreateCameraRay(uv);
@@ -128,5 +155,6 @@ void CSMain(uint3 id : SV_DispatchThreadID) {
         result += ray.energy * Shade(ray, hit);
         if (!any(ray.energy)) break;
     }
+
     Result[id.xy] = float4(result, 1);
 }

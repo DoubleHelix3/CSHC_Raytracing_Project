@@ -1,8 +1,4 @@
 Base path: 'C:/Program Files/Unity/Hub/Editor/2019.2.1f1/Editor/Data', plugins path 'C:/Program Files/Unity/Hub/Editor/2019.2.1f1/Editor/Data/PlaybackEngines'
 Cmd: initializeCompiler
 Cmd: compileComputeKernel
-  error: 2 plat 4 at RayTracingShader.compute(8): undeclared identifier 'Result'
-  api=4 insize=460 outsize=0 ok=0
-Cmd: compileComputeKernel
-  error: 2 plat 4 at RayTracingShader.compute(20): undeclared identifier '_PixelOffset'
-  api=4 insize=667 outsize=0 ok=0
+  api=4 insize=4107 outsize=3996 ok=1
